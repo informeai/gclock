@@ -13,6 +13,7 @@ import (
 	"time"
 )
 
+//playSound execute play of song
 func playSound() {
 	f, err := os.Open(os.Getenv("song"))
 	if err != nil {
@@ -32,6 +33,7 @@ func playSound() {
 	<-done
 }
 
+//loopClock execute loop events
 func loopClock(seconds int) {
 	//write clock in center terminal
 	area, err := pterm.DefaultArea.WithCenter().Start()
@@ -57,16 +59,18 @@ func loopClock(seconds int) {
 	playSound()
 
 }
+
+//run function in the loop
 func run(pomo string) {
 	//loopClock
 	if pomo == "pomo" {
-		// loopClock(1500)
-		loopClock(10)
+		loopClock(1500)
 	} else if pomo == "repose" {
-		// loopClock(300)
-		loopClock(5)
+		loopClock(300)
 	}
 }
+
+//next execute new interaction.
 func next(count int) {
 	pterm.DefaultBasicText.WithStyle(pterm.NewStyle(pterm.FgCyan)).Print("\U0001F449 [1]NEW POMODORO, [2]REPOSE, [3]QUIT: ")
 	//reader
@@ -90,6 +94,7 @@ func next(count int) {
 
 }
 
+//initialise function prepare for execution.
 func initialise(count int, pomo string) {
 	//header
 	fmt.Println("\n\n")
@@ -115,6 +120,8 @@ func initialise(count int, pomo string) {
 		run(pomo)
 	}
 }
+
+//clean function execute clear in terminal.
 func clear() {
 	if runtime.GOOS == "windows" {
 		cmd := exec.Command("cls")
@@ -132,6 +139,7 @@ func clear() {
 	}
 }
 
+//Start function execute all functions the events.
 func Start(count int, pomo string) {
 	clear()
 	initialise(count, pomo)
