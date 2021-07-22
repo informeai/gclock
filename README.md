@@ -12,11 +12,13 @@ Clone
 ```
 git clone https://github.com/informeai/gclock.git
 ```
-build
+Build
 ```
+cd gclock
 go build
 ```
 ## Usage
+Inside the gclock directory
 ```
 ./gclock
 ```
