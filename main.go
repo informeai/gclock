@@ -61,12 +61,14 @@ func loopClock(seconds int) {
 }
 
 //run function in the loop
-func run(pomo string) {
+func run(pomo string, count int) {
 	//loopClock
 	if pomo == "pomo" {
 		loopClock(1500)
-	} else if pomo == "repose" {
+	} else if pomo == "repose" && count%3 != 0 {
 		loopClock(300)
+	} else if pomo == "repose" && count%3 == 0 {
+		loopClock(900)
 	}
 }
 
@@ -117,7 +119,7 @@ func initialise(count int, pomo string) {
 		area.Update(str)
 
 	} else {
-		run(pomo)
+		run(pomo, count)
 	}
 }
 
